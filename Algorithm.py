@@ -2,7 +2,10 @@ import jieba
 import sys
 import math
 
-orig_path, orig_add_path, orig_out_path = sys.argv[1:4]
+try:
+    orig_path, orig_add_path, orig_out_path = sys.argv[1:4]
+except ValueError as e:
+    print("\n输入错误!", e, "请重新输入参数！")
 
 # orig_path = 'E:\test\orig.txt'
 # orig_add_file = 'E:\test\orig_0.8_add'
@@ -26,8 +29,8 @@ for word in words1:
 for word in words1:
     vec1[word] += 1
 
-for key in vec1:
-    print(key + ":" + str(vec1[key]))
+# for key in vec1:
+# print(key + ":" + str(vec1[key]))
 
 for word in words2:
     vec2[word] = 0
@@ -35,8 +38,8 @@ for word in words2:
 for word in words2:
     vec2[word] += 1
 
-for key in vec2:
-    print(key + ":" + str(vec2[key]))
+# for key in vec2:
+# print(key + ":" + str(vec2[key]))
 
 up = 0
 for key in vec1:
@@ -65,6 +68,5 @@ def cut(num, c):
     return (num // c) * c
 
 
+print("\nsimilarity：")
 print(cut(Similarity, 2))
-
-
